@@ -1,5 +1,3 @@
-// import { useState, useEffect } from "react";
-// import {nanoid} from 'nanoid';
 import Form from "./Form";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
@@ -17,7 +15,6 @@ import Loader from "./Loader";
 
 export default function App() {
   const value = useSelector(state => state.filter);
-  // console.log(value);
   const dispatch = useDispatch();
   const {data, isLoading} = useGetContactsApiQuery();
   const [delContact] = useDelContactMutation();
@@ -42,7 +39,6 @@ export default function App() {
   };
 
   const changeFilter = e => {
-    // setFilter( e.currentTarget.value);
     dispatch(updateFilter(e.currentTarget.value));
   };
 
@@ -51,7 +47,7 @@ export default function App() {
         <h1 className={css.wrapper__title}>Phonebook</h1>
         <ToastContainer
           autoClose={5000}
-      />
+        />
         <Form
           onSubmit={addItems}
         />
