@@ -6,8 +6,6 @@ import Filter from "./Filter";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import {GiSpinningBlades} from 'react-icons/gi';
-import { IconContext } from 'react-icons/lib';
 import { updateFilter } from "redux/Slice";
 import {
     useGetContactsApiQuery,
@@ -15,6 +13,7 @@ import {
     useCreateContactMutation,
 } from 'redux/contactsApi';
 import css from './App.module.css';
+import Loader from "./Loader";
 
 export default function App() {
   const value = useSelector(state => state.filter);
@@ -62,11 +61,7 @@ export default function App() {
           onChange={changeFilter}
         />
         {isLoading && (
-              <IconContext.Provider value={{color: '#de14b9'}}>
-                  <div role='alert'>
-                      <GiSpinningBlades size='90' />
-                  </div>
-              </IconContext.Provider>
+          <Loader />
         )}
         {data && (
           <ContactList
