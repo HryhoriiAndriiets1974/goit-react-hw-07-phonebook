@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import css from './Contact.module.css';
 
-const Contact = ({id, name, number, onDeleteContact}) => {
+const Contact = ({id, name, phone, onDeleteContact}) => {
   return (
     <>
         <p className={css.contacts__name}>
             {name} : ...
         <span className={css.contacts__number}>
-            {number}
+            {phone}
         </span>
         </p>
         <button
@@ -27,7 +27,7 @@ Contact.propTypes = {
     PropTypes.exact({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
     }),
   ),
   onDeleteContact: PropTypes.func.isRequired,

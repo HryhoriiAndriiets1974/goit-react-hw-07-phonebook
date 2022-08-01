@@ -3,7 +3,7 @@ import css from './Form.module.css';
 
 function Form(props) {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleChange = e => {
     const {name, value} = e.currentTarget;
@@ -11,8 +11,8 @@ function Form(props) {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
       default:
         return;
@@ -21,13 +21,13 @@ function Form(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.onSubmit({name, number});
+    props.onSubmit({name, phone});
     resetForm();
   }
 
   const resetForm = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   }
 
     return (
@@ -51,8 +51,8 @@ function Form(props) {
           <input
             className={css.form__input}
             type="tel"
-            name="number"
-            value={number}
+            name="phone"
+            value={phone}
             onChange={handleChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

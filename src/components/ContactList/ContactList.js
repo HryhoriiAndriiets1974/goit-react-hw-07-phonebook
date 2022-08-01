@@ -5,12 +5,12 @@ import css from './ContactList.module.css';
 const ContactList = ({contacts, onDeleteContact}) => {
   return (
   <ul className={css.contacts}>
-  {contacts.map(({id, name, number}) => (
+  {contacts.map(({name, phone, id}) => (
     <li key={id} className={css.contacts__item}>
 
       <Contact
         name={name}
-        number={number}
+        phone={phone}
         onDeleteContact={() => onDeleteContact(id)}
       />
 
@@ -21,10 +21,10 @@ const ContactList = ({contacts, onDeleteContact}) => {
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
+    PropTypes.shape({
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     }),
   ),
   onDeleteContact: PropTypes.func.isRequired,
