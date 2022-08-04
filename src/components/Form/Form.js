@@ -35,6 +35,7 @@ function Form() {
     };
     if (name && phone) {
       await newContact({name: name, phone: phone}).unwrap();
+      resetForm();
     };
   };
 
