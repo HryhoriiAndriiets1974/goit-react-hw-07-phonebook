@@ -10,3 +10,9 @@
   align-items: baseline;
   justify-content: space-between;
 }
+
+.contacts__message {
+  color: var(--primary-text-color);
+  font-size: 24px;
+  text-align: center;
+}

@@ -13,9 +13,3 @@
 .wrapper__title {
  text-align: center;
 }
-
-.wrapper__message {
-  color: var(--primary-text-color);
-  font-size: 24px;
-  text-align: center;
-}

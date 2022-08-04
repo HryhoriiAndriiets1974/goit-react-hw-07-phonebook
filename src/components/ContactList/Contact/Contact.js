@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
+import {useDelContactMutation} from '../../../redux/contactsApi';
 import css from './Contact.module.css';
 
-const Contact = ({id, name, phone, onDeleteContact}) => {
+const Contact = ({id, name, phone}) => {
+  const [delContact] = useDelContactMutation();
+
+  const handleDelContact = async id => {
+    await delContact(id).unwrap();
+  }
   return (
     <>
         <p className={css.contacts__name}>
@@ -13,7 +19,7 @@ const Contact = ({id, name, phone, onDeleteContact}) => {
         <button
           className={css.contacts__btn}
           type="button"
-          onClick={() => onDeleteContact(id)}
+          onClick={() => handleDelContact(id)}
         >
           Delete
         </button>
@@ -23,14 +29,9 @@ const Contact = ({id, name, phone, onDeleteContact}) => {
 }
 
 Contact.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       phone: PropTypes.string.isRequired,
-    }),
-  ),
-  onDeleteContact: PropTypes.func.isRequired,
-}
+};
 
 export default Contact;
